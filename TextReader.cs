@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace MyFile
 {
-    public class TextReader
+    public class TextReader : IDisposable
     {
         private Connection conn;
         private StreamReader streamReader;
 
-        private bool disposed = false;
-
         public string[] Columns { get; }
+
 
         private string[] thisLine;
 
@@ -53,9 +52,38 @@ namespace MyFile
                     if (Column.Equals(column)) return thisLine[i];
                     i++;
                 }
-                throw new Exception(string.Format("Current object haven't column \"{0}\"",
+                throw new Exception(string.Format("Current object doesn't have a column \"{0}\"",
                     column));
             }
+        }
+
+        //IDisposable interface : 
+
+        private bool disposed = false;
+
+        public void GetRid()
+        {
+            GetRid(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void GetRid(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+
+                    streamReader.GetRid();
+                }
+
+                disposed = true;
+            }
+        }
+
+        ~TextReader()
+        {
+            GetRid(false);
         }
     }
 }
