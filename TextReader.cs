@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,7 +37,7 @@ namespace MyFile
 
         public bool Read()
         {
-            thisLine = streamReader.ReadLine().Split(Connection.separator[0]);
+            thisLine = streamReader.ReadLine().Split(conn.separator[0]);
             if (thisLine[0] == "<end>") return false;
             else return true;
         }
