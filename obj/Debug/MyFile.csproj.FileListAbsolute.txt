@@ -1,0 +1,2 @@
+C:\Users\Vika\source\repos\MyFile\MyFile\obj\Debug\MyFile.csprojAssemblyReference.cache
+C:\Users\Vika\source\repos\MyFile\MyFile\obj\Debug\MyFile.csproj.CoreCompileInputs.cache
